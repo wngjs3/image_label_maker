@@ -1,5 +1,3 @@
-네, markdown 파일은 backtick으로 감싸지 않고 직접 내용을 작성하겠습니다.
-
 # Image Labeling Program
 
 A simple GUI program for labeling images with intention levels and tasks.
