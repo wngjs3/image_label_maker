@@ -231,9 +231,14 @@ class ImageLabeler:
                     self.update_file_list()
                     self.show_current_image()
 
-                    # Task 관련 UI 활성화
+                    # Task 관련 UI 초기 상태 설정
                     self.task_entry.config(state="normal")
-                    self.task_edit_btn.config(state="normal")
+                    self.task_edit_btn.config(
+                        state="disabled"
+                    )  # Edit Task 버튼 비활성화
+                    self.task_confirm_btn.config(
+                        state="normal"
+                    )  # Confirm Task 버튼 활성화
                     self.task_entry.focus_set()
                 else:
                     messagebox.showinfo("Notice", "No image files in selected folder")
@@ -358,11 +363,10 @@ class ImageLabeler:
         if new_task:
             self.current_task = new_task
             self.task_entry.config(state="disabled")
-            self.task_edit_btn.config(state="normal")
-            self.task_confirm_btn.config(state="disabled")
+            self.task_edit_btn.config(state="normal")  # Edit Task 버튼 활성화
+            self.task_confirm_btn.config(state="disabled")  # Confirm Task 버튼 비활성화
         else:
             messagebox.showerror("Error", "Please enter a task")
-            # 실패시 다시 입력할 수 있도록 포커스 설정
             self.task_entry.focus_set()
 
     def label_image(self, level):
