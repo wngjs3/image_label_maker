@@ -345,6 +345,13 @@ class ImageLabeler:
                 if self.level_history_label:
                     self.level_history_label.destroy()
                     self.level_history_label = None
+
+            # 파일 리스트에서 현재 이미지 선택
+            self.file_listbox.selection_clear(0, tk.END)  # 기존 선택 해제
+            self.file_listbox.selection_set(self.current_index)  # 현재 이미지 선택
+            self.file_listbox.see(
+                self.current_index
+            )  # 현재 선택된 항목이 보이도록 스크롤
         else:
             self.image_label.config(image="")
             self.status_label.config(text="All images are labeled")
@@ -426,6 +433,10 @@ class ImageLabeler:
         if 0 <= new_index < len(self.image_files):
             self.current_index = new_index
             self.show_current_image()
+            # 파일 리스트에서 현재 이미지 선택
+            self.file_listbox.selection_clear(0, tk.END)
+            self.file_listbox.selection_set(self.current_index)
+            self.file_listbox.see(self.current_index)
 
 
 def main():
